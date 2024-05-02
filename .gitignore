@@ -1,0 +1,7 @@
+cypress.env.json
+/mochaawesome-report
+/mochaawesome-report/*
+/cypress/downloads/
+/cypress/downloads/*
+node_modules
+package-lock.json
