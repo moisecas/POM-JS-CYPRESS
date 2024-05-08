@@ -12,8 +12,8 @@ async function setupNodeEvents(on, config) {
 module.exports = defineConfig({
   e2e: {
     setupNodeEvents,
-    baseUrl: 'https://talana.com',
-    specPattern: "cypress/e2e/features/*/*.feature",
+    baseUrl: 'https://web.talana.com', 
+    specPattern: "cypress/e2e/features/**/*.feature", 
     watchForFileChanges: false,
     chromeWebSecurity: false,
     experimentalModifyObstructiveThirdPartyCode: true,
