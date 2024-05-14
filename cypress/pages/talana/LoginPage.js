@@ -22,7 +22,6 @@ class LoginPage {
     }
   
     completeLogin() {
-      // Usa las credenciales directamente desde `Cypress.env`
       this.typeUserName(Cypress.env("remPe").user);
       this.typePassword(Cypress.env("remPe").password);
       this.submitLogin();
@@ -30,5 +29,5 @@ class LoginPage {
     }
   }
   
-  export default new LoginPage();
+  export const loginPage = new LoginPage();
   
