@@ -18,13 +18,17 @@ class LoginPage {
     }
   
     submitLogin() {
+      cy.intercept('POST', '/es/api/login/check-login-methods').as('checkLoginMethods');
+      this.clickButtonLogin();
+      cy.wait('@checkLoginMethods').then((interception) => {
+        expect(interception.response.statusCode).to.eq(200);
+      })
       this.clickButtonLogin();
     }
   
     completeLogin() {
-      this.typeUserName(Cypress.env("remPe").user);
-      this.typePassword(Cypress.env("remPe").password);
-      this.submitLogin();
+      this.typeUserName(Cypress.env('user'));
+      this.typePassword(Cypress.env('password'));
       this.submitLogin();
     }
   }

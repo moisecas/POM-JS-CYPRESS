@@ -20,22 +20,3 @@ module.exports = defineConfig({
     defaultCommandTimeout: 10000
   },
 });
-
-// module.exports = defineConfig({
-//   e2e: {
-//     setupNodeEvents(on, config) {
-//       // implement node event listeners here
-//     },
-//     specPattern: "cypress/e2e/features/*/*.feature",
-//     baseUrl: "https://qa-remuchile.talana.dev",
-//     chromeWebSecurity: false,
-//     env: {
-//       file: "cypress.env.json",
-//     },
-//     video: false,
-//     retries: 0,
-//     viewportWidth: 1920,
-//     viewportHeight: 1080,
-//   },
-  
-// });
