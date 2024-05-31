@@ -1,8 +1,8 @@
 Feature: Login Test
 
 Scenario: Successful login
-    Given I am a user with username "remPe"
-    When I log in with the username "remPe"
+    Given I enter in to the login from page 
+    When I login with the valid username 
     Then I should be successfully logged in
 
 

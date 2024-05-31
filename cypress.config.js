@@ -12,7 +12,7 @@ async function setupNodeEvents(on, config) {
 module.exports = defineConfig({
   e2e: {
     setupNodeEvents,
-    baseUrl: 'https://web.talana.com', 
+    baseUrl: 'https://qa-remuperu.talana.dev/es-pe/remuneraciones/login-vue#/', 
     specPattern: "cypress/e2e/features/**/*.feature", 
     watchForFileChanges: false,
     chromeWebSecurity: false,
