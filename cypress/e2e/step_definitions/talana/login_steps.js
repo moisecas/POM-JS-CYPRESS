@@ -1,5 +1,5 @@
 import { Given, When, Then} from '@badeball/cypress-cucumber-preprocessor';
-import {loginPage} from "../../../pages/talana/LoginPage";
+import {loginPage} from "../../../support/pages/talana/LoginPage";
 
 Given("I enter in to the login from page", () => {
   cy.visit(Cypress.env('baseUrl'));
