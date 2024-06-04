@@ -12,8 +12,3 @@ When("I login with the valid username", () => {
 Then("I should be successfully logged in", () => {
   cy.url().should('include', '/remuneraciones');
 });
-
-
-
-
-
