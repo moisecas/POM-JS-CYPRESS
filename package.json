@@ -13,7 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@badeball/cypress-cucumber-preprocessor": "latest",
+    "@badeball/cypress-cucumber-preprocessor": "latest", 
     "@cypress/browserify-preprocessor": "^3.0.2",
     "cypress": "latest",
     "cypress-wait-until": "^1.7.2"
