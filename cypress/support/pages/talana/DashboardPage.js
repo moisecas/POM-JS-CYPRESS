@@ -9,7 +9,7 @@ class DashboardPage {
     }
 
     homePageBreadCrumbs() {
-        this.elements.breadCrumbs().should('contain', 'Talana | Dashboard');
+        this.elements.breadCrumbs().should('contain', 'Talana | Remuneraciones');
     }
 
     clearRecommendationModal() {
