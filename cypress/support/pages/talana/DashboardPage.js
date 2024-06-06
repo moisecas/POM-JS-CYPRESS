@@ -1,36 +1,35 @@
 import { generalUtils } from "../../utils/GeneralUtils"; 
 
-class Dashboard {
+class DashboardPage {
 
     elements = {
         recommendationModal: () => cy.get('[data-testid="survey"]'),
         recommendationModalCloseButton: () => cy.get('.sv__btn-close'),
         breadCrumbs: () => cy.get('#talana-breadcrumbs-world-title > strong'),
-
     }
 
     homePageBreadCrumbs() {
-        this.elements.breadCrumbs().should('contain', 'Remuneraciones'); 
+        this.elements.breadCrumbs().should('contain', 'Talana');
     }
 
-    clearRecommendationModal(){
-        generalUtils.pageLoadedComplete() //espera a que la pagina este completamente cargada
-        this.elements.recommendationModal().then(($modal) => { //verifica si el modal de recomendacion esta visible
-            if ($modal.length > 0 && $modal.is(':visible')) { //si el modal esta visible, lo cierra 
-                this.elements.recommendationModalCloseButton().click() //cierra el modal
-            } else { //si no esta visible, lanza un error por consola 
-                throw new Error('Recommendation modal is not found or is not visible') 
+    clearRecommendationModal() {
+        generalUtils.validatePathUrlOfPageLoaded("talana.dev/es/remuneraciones/#/");
+        cy.get('body').then($body => {
+            if ($body.find('[data-testid="survey"]').length > 0) {
+                this.elements.recommendationModal().should('exist').then(() => {
+                this.elements.recommendationModalCloseButton().click();
+              });
+            } else {
+                cy.log('The satisfaction survey modal is not visible');
             }
-        }) 
+        })
+    }    
 
-    }
-
-    verifyLogin(){
+    verifyLogin() {
         this.clearRecommendationModal()
-        this.homePageBreadCrumbs() 
+        this.homePageBreadCrumbs();
     }
-
 
 }
 
-export const dashboard = new Dashboard(); 
+export const dashboardPage = new DashboardPage(); 
