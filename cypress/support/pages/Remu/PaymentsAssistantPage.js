@@ -30,4 +30,4 @@ class PaymentsAssistantPage {
     }
 }
 
-export const paymentAssistantPage = new PaymentsAssistant();
+export const paymentAssistantPage = new PaymentsAssistantPage();
