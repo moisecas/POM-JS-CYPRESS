@@ -41,3 +41,5 @@ class SideBarPage {
     }
 
 }
+
+export const sideBarPage = new SideBarPage(); 
