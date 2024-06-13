@@ -1,5 +1,3 @@
-
-
 class PaymentsAssistantPage { 
     elements = {
         salaryOption: () => cy.get('[data-cy="rem-paymentAssistant-salary"]'),
