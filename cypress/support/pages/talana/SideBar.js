@@ -15,27 +15,35 @@ class SideBarPage {
     enterToHome() {
         this.elements.home().click();
     }
+
     enterToEmployees() {
         this.elements.employees().click();
     }
+
     enterToCompanies() {
         this.elements.companies().click();
     }
+
     enterToPaymentAssistant() {
         this.elements.paymentAssistant().click();
     }
+
     enterToDataLoad() {
         this.elements.dataLoad().click();
     }
+
     enterToAdminAbsences() {
         this.elements.adminAbsences().click();
     }
+
     enterToReports() {
         this.elements.reports().click();
     }
+
     enterToItemsWorkflow() {
         this.elements.itemsWorkflow().click();
     }
+    
     enterToAdvancedTools() {
         this.elements.advancedTools().click();
     }

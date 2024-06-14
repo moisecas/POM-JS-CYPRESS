@@ -6,12 +6,13 @@ Background: Successful Login
     Then I should be successfully logged in
 
 Scenario: Open the payment page
-    Given I go to the payments assistant menu option
-    When I got to the salary option
+    When I go to the payments assistant menu option
+    And I go to the salary option
     Then I should be loaded into the payments page
-@focus 
+
 Scenario: Add all employees without terminated employees option in salary Page
-    Given I go to salary page in to the payment assistant
-    And the switch inlude terminated is off
-    When I click on Add all button for add al employees
+    Given I am on the payments page
+    And the switch include terminated is off
+    When I click on Add all button for add all employees
     Then should be add all without terminated employees
+
