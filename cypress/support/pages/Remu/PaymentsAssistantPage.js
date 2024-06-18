@@ -26,6 +26,16 @@ class PaymentsAssistantPage {
     verifyTerminatedEmployeesOff() {
         this.elements.includeTerminatedEployeesOption().should('not.be.checked')
     }
+
+    validateEmployeesUrl() { //metodo para validar la carga de los empleados 
+        const expectedUrl = 'https://qa-remuperu.talana.dev/es-pe/remuneraciones/asistenteDePagoSueldo/seleccionPersonasAjax?todos=true&reproceso=false&incluirFiniquitados=true';
+        cy.intercept('GET', expectedUrl).as('loadEmployees');
+        cy.wait('@loadEmployees').then((interception) => {
+            expect(interception.request.url).to.eq(expectedUrl);
+            expect(interception.response.statusCode).to.eq(200);
+        });
+    }
+
 }
 
 export const paymentAssistantPage = new PaymentsAssistantPage();

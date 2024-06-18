@@ -1,9 +1,9 @@
 Feature: Generate Liquidation
 
 Background: Successful Login
-    Given I enter in to the login from page 
-    When I login with the valid username 
-    Then I should be successfully logged in
+    Given I enter in to the login from page
+    And I login with the valid username
+    And I should be successfully logged in
 
 Scenario: Open the payment page
     When I go to the payments assistant menu option
