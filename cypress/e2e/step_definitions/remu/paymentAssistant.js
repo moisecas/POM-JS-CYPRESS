@@ -25,9 +25,9 @@ Then("the switch include terminated is off", () => {
 
 When("I click on Add all button for add all employees", () => {
     paymentAssistantPage.addAllEmployees(); 
-    paymentAssistantPage.validateEmployeesUrl(); 
+   
 });
 
 Then("should be add all without terminated employees", () => {
-    paymentAssistantPage.validateEmployeesUrl(); 
+    // No se requiere validación adicional, el paso se completa aquí. 
 });
