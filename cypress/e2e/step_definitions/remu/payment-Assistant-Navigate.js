@@ -12,5 +12,5 @@ When("I go to the salary option", () => {
 });
 
 Then("I should be loaded into the payments page", () => {
-    //paymentAssistantPage.pageBreadCrumbs();
+    paymentAssistantPage.pageBreadCrumbs();
 }); 
