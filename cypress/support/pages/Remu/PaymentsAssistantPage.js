@@ -30,10 +30,7 @@ class PaymentsAssistantPage {
 
     verifyMessage(message) {
         this.elements.succesMessage().should('contain', 'Se agregaron')
-    }
-
-    
-
+    }   
 }
 
 export const paymentAssistantPage = new PaymentsAssistantPage();
