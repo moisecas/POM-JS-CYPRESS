@@ -9,3 +9,5 @@ Scenario: Open the payment page
     When I go to the payments assistant menu option
     And I go to the salary option
     Then I should be loaded into the payments page 
+
+    payment-assistant-navigate
