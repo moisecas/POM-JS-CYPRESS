@@ -11,5 +11,5 @@ Background: Successful Login
 Scenario: Add all employees without terminated employees option in salary Page
     And the switch include terminated is off
     When I click on Add all button for add all employees
-    Then should be add all without terminated employees
+    Then should be add all without terminated employees 
 
