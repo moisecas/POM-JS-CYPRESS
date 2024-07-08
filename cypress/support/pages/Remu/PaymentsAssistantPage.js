@@ -39,6 +39,32 @@ class PaymentsAssistantPage {
     verifyMessage(message) {
         this.elements.succesMessage().should('contain', 'Se agregaron')
     }   
+
+    //metodos nuevos para el asistente de pagos
+    clickButtonStepOne() {
+        this.elements.buttonStepOne().click()
+    }
+
+    clickButtonStepOneConfirmation() {
+        this.elements.buttonStepOneConfirmation().click()
+    }
+
+    clickButtonStepTwo() {
+        this.elements.buttonStepTwo().click()
+    }
+
+    verifyModalGenerate() {
+        this.elements.modalGenerate().should('contain', 'Generando Boletas');    
+    }
+
+    clickButtonStepThree() {
+        this.elements.buttonStepThree().click()
+    }
+
+    clickButtonStepFour() {
+        this.elements.butoonStepFour().click()
+    }
+
 }
 
 export const paymentAssistantPage = new PaymentsAssistantPage();
