@@ -12,3 +12,10 @@ Background:
     And should be add all without terminated employees
 
 Scenario: Generate liquidation for employees 
+    When I click on the step one
+    Then I confirm the generation of payroll liquidations
+    And I click on the step two
+    Then I see the payroll liquidation processing window
+    And I click on the step three
+    Then I see the payroll generation processing window
+    And I visualize the print liquidations button 
