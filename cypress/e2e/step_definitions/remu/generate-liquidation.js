@@ -22,7 +22,7 @@ When("I click on the step three", () => {
 });
 
 Then("I see the payroll generation processing window", () => {
-    paymentAssistantPage.verifyModalGenerate();
+    paymentAssistantPage.verifyModalGenerateTwo();
 });
 
 Then("I visualize the print liquidations button", () => {

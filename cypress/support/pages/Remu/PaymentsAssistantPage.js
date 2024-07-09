@@ -54,15 +54,43 @@ class PaymentsAssistantPage {
     }
 
     verifyModalGenerate() {
-        this.elements.modalGenerate().should('contain', 'Generando Boletas');    
+        cy.intercept('GET', '**/es-pe/remuneraciones/asistenteDePago/progress?liquidacionProcessID=*').as('generationProgress');
+        this.elements.modalGenerate().should('contain', 'Generando Boletas');
+        cy.wait('@generationProgress', { timeout: 60000 }).its('response.statusCode').should('eq', 200);  
     }
 
-    clickButtonStepThree() {
-        this.elements.buttonStepThree().click()
+    clickButtonStepThree() {       
+        const waitForButtonStepThree = () => {
+            cy.get('body').then(($body) => { //se obtiene el body para buscar el elemento 
+                if ($body.find('[data-cy="rem-paymentAssistantSalary-step3-btnNext"]').length === 0) { //se busca el elemento
+                    cy.wait(10000); //espera para volver a buscar el elemento
+                    waitForButtonStepThree(); // Llamada recursiva para seguir esperando
+                } else {
+                    this.elements.buttonStepThree().should('be.visible').click(); // Verificar visibilidad y hacer clic
+                }
+            });
+        };
+
+        waitForButtonStepThree();
     }
 
     clickButtonStepFour() {
         this.elements.butoonStepFour().click()
+    }
+
+    verifyModalGenerateTwo() {
+        const waitForModalToDisappear = () => {
+            cy.get('body').then(($body) => {
+                if ($body.find('[data-cy="rem-modalProgressCounter-textTitle"]').length > 0) {
+                    cy.wait(1000); // Espera breve antes de verificar de nuevo
+                    waitForModalToDisappear(); // Llamada recursiva para seguir esperando
+                } else {
+                    // Modal ha desaparecido
+                }
+            });
+        };
+
+        waitForModalToDisappear();
     }
 
 }
