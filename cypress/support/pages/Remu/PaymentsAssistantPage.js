@@ -10,14 +10,12 @@ class PaymentsAssistantPage {
         step1NextButton: () => cy.get('[data-cy="rem-paymentAssistantSalary-step1-btnNext"]'),
         showStep1: () => cy.get('[data-cy="rem-paymentAssistant-showStep1"]'),
         succesMessage: () => cy.get('.bootstrap-growl'),
-        //pasos nuevos
-        buttonStepOne: () => cy.get('[data-cy="rem-paymentAssistantSalary-step1-btnNext"]'), //primera flecha verde
+        buttonStepOne: () => cy.get('[data-cy="rem-paymentAssistantSalary-step1-btnNext"]'), 
         buttonStepOneConfirmation: () => cy.get('[data-cy="rem-paymentAssistantSalary-step1-modalError-btnGenerateLiquidation"]'), //botón modal de confirmación
-        buttonStepTwo: () => cy.get('[data-cy="rem-paymentAssistantSalary-step2-btnNext"]'), //segunda flecha verde
-        modalGenerate: () => cy.get('[data-cy="rem-modalProgressCounter-textTitle"]'), //title: Generando Boletas
-        buttonStepThree: () => cy.get('[data-cy="rem-paymentAssistantSalary-step3-btnNext"]'), //tercera flecha verde   
-        //se repite en este paso  modalGenerate title: Generando boletas
-        butoonStepFour: () => cy.get('[data-cy="rem-paymentAssistant-step4-btnPrintSettlements"]'), //title: Imprimir boletas
+        buttonStepTwo: () => cy.get('[data-cy="rem-paymentAssistantSalary-step2-btnNext"]'), 
+        modalGenerate: () => cy.get('[data-cy="rem-modalProgressCounter-textTitle"]'), 
+        buttonStepThree: () => cy.get('[data-cy="rem-paymentAssistantSalary-step3-btnNext"]'),    
+        butoonStepFour: () => cy.get('[data-cy="rem-paymentAssistant-step4-btnPrintSettlements"]'), 
     }
 
     goToSalary(business) {
@@ -40,7 +38,6 @@ class PaymentsAssistantPage {
         this.elements.succesMessage().should('contain', 'Se agregaron')
     }   
 
-    //metodos nuevos para el asistente de pagos
     clickButtonStepOne() {
         this.elements.buttonStepOne().click()
     }
@@ -61,12 +58,12 @@ class PaymentsAssistantPage {
 
     clickButtonStepThree() {       
         const waitForButtonStepThree = () => {
-            cy.get('body').then(($body) => { //se usa el body para buscar el elemento en toda la página
-                if ($body.find('[data-cy="rem-paymentAssistantSalary-step3-btnNext"]').length === 0) { //se busca el elemento
-                    cy.wait(10000); //espera para volver a buscar el elemento
-                    waitForButtonStepThree(); // Llamada recursiva para seguir esperando
+            cy.get('body').then(($body) => { 
+                if ($body.find('[data-cy="rem-paymentAssistantSalary-step3-btnNext"]').length === 0) { 
+                    cy.wait(10000); 
+                    waitForButtonStepThree(); 
                 } else {
-                    this.elements.buttonStepThree().should('be.visible').click(); // Verificar visibilidad y hacer clic
+                    this.elements.buttonStepThree().should('be.visible').click(); 
                 }
             });
         };
@@ -82,15 +79,14 @@ class PaymentsAssistantPage {
         const waitForModalToDisappear = () => {
             cy.get('body').then(($body) => {
                 if ($body.find('[data-cy="rem-modalProgressCounter-textTitle"]').length > 0) {
-                    cy.wait(1000); // Espera breve antes de verificar de nuevo
-                    waitForModalToDisappear(); // Llamada recursiva para seguir esperando
-                } else {
-                    // Modal ha desaparecido
+                    cy.wait(1000); 
+                    waitForModalToDisappear(); 
+                } else {                    
                 }
             });
         };
 
-        waitForModalToDisappear();
+        waitForModalToDisappear(); 
     }
 
 }
