@@ -61,7 +61,7 @@ class PaymentsAssistantPage {
 
     clickButtonStepThree() {       
         const waitForButtonStepThree = () => {
-            cy.get('body').then(($body) => { //se obtiene el body para buscar el elemento 
+            cy.get('body').then(($body) => { //se usa el body para buscar el elemento en toda la página
                 if ($body.find('[data-cy="rem-paymentAssistantSalary-step3-btnNext"]').length === 0) { //se busca el elemento
                     cy.wait(10000); //espera para volver a buscar el elemento
                     waitForButtonStepThree(); // Llamada recursiva para seguir esperando
