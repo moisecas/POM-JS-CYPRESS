@@ -1,30 +1,29 @@
-import { Given, When, Then} from '@badeball/cypress-cucumber-preprocessor'; 
-import { paymentAssistantPage } from "../../../support/pages/Remu/PaymentsAssistantPage";  
+import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
+import { sideBarPage } from "../../../support/pages/talana/SideBar";
+import { loginPage } from "../../../support/pages/talana/LoginPage";
+import { paymentAssistantPage } from "../../../support/pages/Remu/PaymentsAssistantPage";
+import { dashboardPage } from "../../../support/pages/talana/DashboardPage";
 
-When("I click on the step one", () => {
+Given("I am logged in and prepared to generate liquidation", () => {
+    cy.visit(Cypress.env("baseUrl"));
+    loginPage.completeLogin();
+    dashboardPage.verifyLogin(); 
+    sideBarPage.enterToPaymentAssistant();
+    paymentAssistantPage.goToSalary();  
+    paymentAssistantPage.verifyTerminatedEmployeesOff();  
+    paymentAssistantPage.addAllEmployees();  
+    paymentAssistantPage.verifyMessage('Se agregaron'); 
+});
+
+When("I complete the liquidation steps", () => {
     paymentAssistantPage.clickButtonStepOne();
-});
-
-Then("I confirm the generation of payroll liquidations", () => {
     paymentAssistantPage.clickButtonStepOneConfirmation();
-});
-
-When("I click on the step two", () => {
     paymentAssistantPage.clickButtonStepTwo();
-});
-
-Then("I see the payroll liquidation processing window", () => {
     paymentAssistantPage.verifyModalGenerate();
-});
-
-When("I click on the step three", () => {
     paymentAssistantPage.clickButtonStepThree();
-});
-
-Then("I see the payroll generation processing window", () => {
     paymentAssistantPage.verifyModalGenerateTwo();
 });
 
-Then("I visualize the print liquidations button", () => {
+Then("I should visualize the print liquidations button", () => {
     paymentAssistantPage.clickButtonStepFour();
 });
