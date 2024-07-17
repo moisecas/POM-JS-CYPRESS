@@ -7,15 +7,15 @@ import { dashboardPage } from "../../../support/pages/talana/DashboardPage";
 Given("I am logged in and on the payments assistant page", () => {
     cy.visit(Cypress.env("baseUrl"));
     loginPage.completeLogin();
-    dashboardPage.verifyLogin(); // Verifica el login y la carga del dashboard
+    dashboardPage.verifyLogin(); 
     sideBarPage.enterToPaymentAssistant();
-    paymentAssistantPage.goToSalary(); // Navega a la opción de sueldos
+    paymentAssistantPage.goToSalary(); 
 });
 
 When("I have added all employees without terminated ones", () => {
-    paymentAssistantPage.verifyTerminatedEmployeesOff(); // Verifica que el switch esté apagado
-    paymentAssistantPage.addAllEmployees(); // Añade todos los empleados
-    paymentAssistantPage.verifyMessage('Se agregaron'); // Verifica el popup de confirmación
+    paymentAssistantPage.verifyTerminatedEmployeesOff(); 
+    paymentAssistantPage.addAllEmployees(); 
+    paymentAssistantPage.verifyMessage('Se agregaron'); 
 });
 
 When("I click on the step one", () => {
