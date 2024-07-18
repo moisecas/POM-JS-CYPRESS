@@ -77,7 +77,7 @@ class PaymentsAssistantPage {
         const waitForModalToDisappear = () => {
             cy.get('body').then(($body) => {
                 if ($body.find('[data-cy="rem-modalProgressCounter-textTitle"]').length > 0) {
-                    cy.wait(1000); 
+                    cy.wait(1000)
                     waitForModalToDisappear()
                 } else {                    
                 }
