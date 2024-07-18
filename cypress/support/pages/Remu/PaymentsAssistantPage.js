@@ -78,7 +78,8 @@ class PaymentsAssistantPage {
                 if ($body.find('[data-cy="rem-modalProgressCounter-textTitle"]').length > 0) {
                     cy.wait(1000)
                     waitForModalToDisappear()
-                } else {                    
+                } else { 
+                    cy.log('Modal de progreso ha desaparecido');                   
                 }
             });
         };
