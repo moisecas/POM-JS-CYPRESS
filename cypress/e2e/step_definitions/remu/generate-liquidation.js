@@ -9,7 +9,6 @@ When("I want to generate the payroll liquidations", () => {
 
 Then("I visualize the progress window to continue with the generation", () => {
     paymentAssistantPage.verifyModalGenerate();  
-
     paymentAssistantPage.clickButtonStepThree();
 });
 

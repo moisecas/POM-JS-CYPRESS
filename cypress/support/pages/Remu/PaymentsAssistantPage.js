@@ -65,7 +65,6 @@ class PaymentsAssistantPage {
                 }
             });
         };
-
         waitForButtonStepThree()
     }
 
@@ -83,7 +82,6 @@ class PaymentsAssistantPage {
                 }
             });
         };
-
         waitForModalToDisappear()
     }
 }
