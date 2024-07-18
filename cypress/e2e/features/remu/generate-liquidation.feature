@@ -14,4 +14,3 @@ Scenario: Generate liquidation for employees
     When I want to generate the payroll liquidations
     Then I visualize the progress window to continue with the generation
     And I confirm the generation of payroll liquidations
-

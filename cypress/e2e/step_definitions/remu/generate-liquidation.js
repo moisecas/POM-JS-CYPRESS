@@ -15,4 +15,3 @@ Then("I visualize the progress window to continue with the generation", () => {
 When("I confirm the generation of payroll liquidations", () => {
     paymentAssistantPage.clickButtonStepFour();
 });
-
