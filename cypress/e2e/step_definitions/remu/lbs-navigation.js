@@ -10,4 +10,16 @@ When("I go to the payments advanced tools section lbs masive", () => {
 
 Then("I should be loaded into the lbs masive", () => {
     lbsPage.verifyTitle();  
+    lbsPage.verifyStepOne();
+    lbsPage.verifyTitleStepOne();
+    lbsPage.selectFilterWorker();
+    lbsPage.selectFilterBussinesName();
+    lbsPage.selectFilterCostCenter();
+    lbsPage.selectFilterBranch();
+    // lbsPage.selectFilterCalendar();
+    lbsPage.selectFilterReasonTermination();
+    lbsPage.clickCheckBoxIncludeTrue();
+    // lbsPage.clickCheckBoxConsiderPayment();
+    lbsPage.verifyLabelOne();
+    lbsPage.clickCheckBoxIncludeWorkers();
 });
