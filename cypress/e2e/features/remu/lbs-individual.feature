@@ -6,7 +6,7 @@ Background:
     And I should be successfully logged in
 
 Scenario: Generate lbs individual for employee 
-    When I search for the employee and select them
-    Then I enter their record to generate their individual LBS
+    When I search for employees and generate LBS for each
+    Then I should see the confirmation message
 
     

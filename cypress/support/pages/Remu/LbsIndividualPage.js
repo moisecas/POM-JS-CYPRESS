@@ -2,6 +2,7 @@ class LbsIndividualPage {
     elements = {
         textBox: () => cy.get('label > .form-control'), //escribir dni
         boxDni: () => cy.get('.odd > :nth-child(2) > :nth-child(1)'), //escribir dni
+        buttonNo: () => cy.get('#mostrarNoVigentes-switch'), //boton no vigentes 
         buttonEmployee: () => cy.get(':nth-child(8) > a > .zmdi').first(), //entrar a la ficha del empleado
         buttonLbs: () => cy.get('[data-cy="gdp-employees-request-settlement"]'), //entrar a lbs
         breadCrumbs: () => cy.get('#talana-breadcrumbs-world-title > strong'), //Generar finiquito
@@ -9,16 +10,23 @@ class LbsIndividualPage {
         verifyModal: () => cy.get('#modalTitleId'), //modal de espera
         verifyTitle: () => cy.get('.modal-title > b'), //titulo de ventana generar lbs 
         buttonGenerate: () => cy.get('#GenerarConBoleta'), //boton generar
-        
+        modalTitle: () => cy.get('#modalTitleId'), //titulo de ventana 
+        modalGenerate: () => cy.get('#modalExitoFiniquitoIndependiente > .modal-dialog > .modal-content > .modal-footer > .btn-success'), //Cálculo de LBS Generado
+        buttonInicio: () => cy.get('#modalExitoFiniquitoIndependiente > .modal-dialog > .modal-content > .modal-footer > .btn-warning'), //boton inicio
+        pageBreadCrumbs: () => cy.get('.talana-breadcrumbs-world > a'), //REMUNERACIONES
     }
 
     //metodos 
-    enterDni() {
-        this.elements.textBox().type('41692381') //escribir dni
+    enterDni(dni) {
+        this.elements.textBox().clear().type(dni) //escribir dni
     }
 
-    verifiDni() {
-        this.elements.boxDni().should('contain', '41692381') //verificar dni
+    buttonNoVigentes() {
+        this.elements.buttonNo().click() //boton no vigentes
+    }
+
+    verifiDni(dni) {
+        this.elements.boxDni().should('contain', dni) //verificar dni
     }
 
     enterToEmployee() {
@@ -46,7 +54,34 @@ class LbsIndividualPage {
     }
 
     clickButtonGenerate() {
-        this.elements.buttonGenerate().click() //boton generar
+        const waitForButtonGenerate = () => {
+            cy.get('body').then(($body) => {
+                if ($body.find('#GenerarConBoleta').length === 0) {
+                    cy.wait(1000); // Espera breve antes de verificar de nuevo
+                    waitForButtonGenerate(); // Llamada recursiva para seguir esperando
+                } else {
+                    this.elements.buttonGenerate().should('be.visible').click(); // Verificar visibilidad y hacer clic
+                }
+            });
+        };
+
+        waitForButtonGenerate();
+    }
+
+    verfyModal () {
+        this.elements.modalTitle().should('be.visible') 
+    }
+
+    verfyModalGenerate () {
+        this.elements.modalGenerate().should('be.visible') //Cálculo de LBS Generado
+    }
+
+    clickButtonInicio() {
+        this.elements.buttonInicio().click() //boton inicio
+    }
+
+    verifyPageBreadCrumbs() {
+        this.elements.pageBreadCrumbs().should('contain', 'REMUNERACIONES')
     }
 }
 
