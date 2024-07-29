@@ -12,7 +12,7 @@ class LbsPage {
         filterBussinesName: () => cy.get('[data-cy="rem-massiveLBS-step1-select-businessName"]'), //filtro de nombre de empresa o razón social
         filterCostCenter: () => cy.get('[data-cy="rem-massiveLBS-step1-select-costCenter"]'), //filtro de centro de costo
         filterBranch: () => cy.get('[data-cy="rem-massiveLBS-step1-select-branch"]'), //filtro de sucursal
-        // filterCalendar: () => cy.get('#e057efc1-a6e9-49ce-9cd6-a70a3db00fba'), //filtro de calendario
+        filterCalendar: () => cy.get('[data-cy="rem-massiveLBS-step1-select-retirementDate"]'), //filtro de calendario
         filterReasonTermination: () => cy.get('[data-cy="rem-massiveLBS-step1-select-reasonForTermination"]'), //filtro de motivo de terminación
         checkBoxIncludeTrue: () => cy.get('[data-cy="rem-massiveLBS-step1-checkbox-includeTruncatedRewardForCTSBase"]'), //checkbox incluir trabajadores activos
         checkBoxConsiderPayment: () => cy.get('[data-cy="rem-massiveLBS-step1-checkbox-considerPayment"]'), //checkbox considerar pago de beneficios
@@ -56,9 +56,9 @@ class LbsPage {
         this.elements.filterBranch().click()
     }
 
-    // selectFilterCalendar() {
-    //     this.elements.filterCalendar().click()
-    // }
+    selectFilterCalendar() {
+        this.elements.filterCalendar().click()
+    }
 
     selectFilterReasonTermination() {
         this.elements.filterReasonTermination().click()
