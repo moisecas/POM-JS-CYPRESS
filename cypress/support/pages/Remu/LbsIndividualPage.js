@@ -9,6 +9,7 @@ class LbsIndividualPage {
         generateLbs: () => cy.get('[data-cy="gdp-employees-simular-action"]'), //clic Generar finiquito
         verifyModal: () => cy.get('#modalTitleId'), //modal de espera
         verifyTitle: () => cy.get('.modal-title > b'), //titulo de ventana generar lbs 
+        buttonClose: () => cy.get('[title="Cerrar mensaje"]'), //boton cerrar cy.get('[title="Cerrar mensaje"]')
         buttonGenerate: () => cy.get('#GenerarConBoleta'), //boton generar
         modalTitle: () => cy.get('#modalTitleId'), //titulo de ventana 
         modalGenerate: () => cy.get('#modalExitoFiniquitoIndependiente > .modal-dialog > .modal-content > .modal-footer > .btn-success'), //Cálculo de LBS Generado
@@ -25,9 +26,27 @@ class LbsIndividualPage {
         this.elements.buttonNo().click() //boton no vigentes
     }
 
+    // verifiDni(dni) {
+    //     this.elements.boxDni().should('contain', dni) //verificar dni
+    // }
+
     verifiDni(dni) {
-        this.elements.boxDni().should('contain', dni) //verificar dni
+        const waitForDni = () => {
+            cy.get('body').then(($body) => {
+                if ($body.find('.odd > :nth-child(2) > :nth-child(1)').length === 0) {
+                    cy.wait(1000); // Espera breve antes de verificar de nuevo
+                    waitForDni(); // Llamada recursiva para seguir esperando
+                } else {
+                    cy.wait(4000); // Espera adicional para asegurar que el contenido se cargue completamente
+                    this.elements.boxDni().should('contain', dni); // Verificar DNI
+                }
+            });
+        };
+    
+        cy.wait(2000); // Espera inicial para permitir que el contenido se cargue
+        waitForDni();
     }
+    
 
     enterToEmployee() {
         this.elements.buttonEmployee().click() //entrar a la ficha del empleado
@@ -53,7 +72,40 @@ class LbsIndividualPage {
         this.elements.verifyTitle().should('contain', 'Información del empleado LBS')
     }
 
+    clickButtonClose() {
+        const waitForButtonClose = () => {
+            cy.get('body').then(($body) => {
+                if ($body.find('[title="Cerrar mensaje"]').length === 0) {
+                    cy.wait(1000); // Espera breve antes de verificar de nuevo
+                    waitForButtonClose(); // Llamada recursiva para seguir esperando
+                } else {
+                    this.elements.buttonClose().scrollIntoView().should('be.visible').click({ force: true }).then(() => {
+                        // Verificar que la acción de cerrar se completó
+                        cy.get('body').then(($bodyAfterClick) => {
+                            if ($bodyAfterClick.find('[title="Cerrar mensaje"]').length > 0) {
+                                // Si el botón aún está presente, volver a intentar
+                                waitForButtonClose();
+                            }
+                        });
+                    });
+                }
+            });
+        };
+    
+        const ensureIframeVisible = () => {
+            cy.get('iframe').then(($iframe) => {
+                if ($iframe.css('opacity') === '0' || $iframe.css('position') === 'fixed' || $iframe.is(':hidden')) {
+                    cy.wrap($iframe).invoke('css', 'opacity', '1').invoke('css', 'position', 'static').invoke('css', 'display', 'block');
+                }
+            });
+        };
+    
+        ensureIframeVisible();
+        waitForButtonClose();
+    }
+    
     clickButtonGenerate() {
+        cy.get('[title="Cerrar mensaje"]').click() //boton cerrar 
         const waitForButtonGenerate = () => {
             cy.get('body').then(($body) => {
                 if ($body.find('#GenerarConBoleta').length === 0) {
@@ -68,15 +120,40 @@ class LbsIndividualPage {
         waitForButtonGenerate();
     }
 
+    
+    verfyModalGenerate () {
+        this.elements.modalGenerate().should('be.visible') //Cálculo de LBS Generado
+    }    
+          
+    
+
     verfyModal () {
         this.elements.modalTitle().should('be.visible') 
     }
 
-    verfyModalGenerate () {
-        this.elements.modalGenerate().should('be.visible') //Cálculo de LBS Generado
-    }
+    // verfyModalGenerate () {
+    //     cy.wait(5000)
+    //     this.elements.modalGenerate().should('be.visible') //Cálculo de LBS Generado
+    // }
+
+    // verfyModalGenerate() {
+    //     const waitForModalGenerate = () => {
+    //         cy.get('body').then(($body) => {
+    //             if ($body.find(this.elements.modalGenerate()).length === 0) {
+    //                 cy.wait(1000); // Espera breve antes de verificar de nuevo
+    //                 waitForModalGenerate(); // Llamada recursiva para seguir esperando
+    //             } else {
+    //                 this.elements.modalGenerate().should('be.visible');
+    //             }
+    //         });
+    //     };
+    
+    //     waitForModalGenerate();
+    // }
+    
 
     clickButtonInicio() {
+        cy.wait(5000)
         this.elements.buttonInicio().click() //boton inicio
     }
 
