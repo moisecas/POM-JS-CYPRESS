@@ -13,7 +13,7 @@ class DashboardPage {
     }
 
     clearRecommendationModal() {
-        generalUtils.validatePathUrlOfPageLoaded("talana.dev/es/remuneraciones/#/");
+        generalUtils.validatePathUrlOfPageLoaded("talana.dev/es/remuneraciones/");
         cy.get('body').then($body => {
             if ($body.find('[data-testid="survey"]').length > 0) {
                 this.elements.recommendationModal().should('exist').then(() => {
