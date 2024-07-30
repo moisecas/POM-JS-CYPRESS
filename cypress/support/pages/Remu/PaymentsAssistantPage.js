@@ -14,6 +14,7 @@ class PaymentsAssistantPage {
         modalGenerate: () => cy.get('[data-cy="rem-modalProgressCounter-textTitle"]'),
         buttonStepThree: () => cy.get('[data-cy="rem-paymentAssistantSalary-step3-btnNext"]'),
         butoonStepFour: () => cy.get('[data-cy="rem-paymentAssistant-step4-btnPrintSettlements"]'),
+        advanceOption: () => cy.get('[data-cy="rem-paymentAssistant-advance"]')
     }
 
     goToSalary(business) {
@@ -79,11 +80,15 @@ class PaymentsAssistantPage {
                     cy.wait(1000)
                     waitForModalToDisappear()
                 } else { 
-                    cy.log('Modal de progreso ha desaparecido');                   
+                    cy.log('Modal de progreso ha desaparecido')                    
                 }
             });
         };
         waitForModalToDisappear()
+    }
+
+    goToAdvance() {
+        this.elements.advanceOption().click() 
     }
 }
 
