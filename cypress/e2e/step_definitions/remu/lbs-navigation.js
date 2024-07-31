@@ -20,6 +20,8 @@ Then("I should be loaded into the lbs masive", () => {
     lbsPage.selectFilterReasonTermination();
     lbsPage.clickCheckBoxIncludeTrue();
     // lbsPage.clickCheckBoxConsiderPayment();
-    lbsPage.verifyLabelOne();
+    // lbsPage.verifyLabelOne();
     lbsPage.clickCheckBoxIncludeWorkers();
+    lbsPage.clickCheckVacation();
+    lbsPage.verifyLabel(); 
 });

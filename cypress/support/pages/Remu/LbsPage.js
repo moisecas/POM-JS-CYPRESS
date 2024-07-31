@@ -18,6 +18,9 @@ class LbsPage {
         checkBoxConsiderPayment: () => cy.get('[data-cy="rem-massiveLBS-step1-checkbox-considerPayment"]'), //checkbox considerar pago de beneficios
         labelOne: () => cy.get(':nth-child(14) > .tln-gap-3'), //label de la interfaz
         checkBoxIncludeWorkers: () => cy.get('[data-cy="rem-massiveLBS-step1-checkbox-includeWorkersWithGeneratedLBS"]'), //checkbox incluir trabajadores
+        checkVacation: () => cy.get('[data-cy="rem-massiveLBS-step1-checkbox-considerPaymentForVacationCompensation"]'), //checkbox considerar vacaciones
+        label: () => cy.get('[data-cy="rem-massiveLBS-step1-vacationCompensationMessageValidation"]'), //Pago por indemnización por despido activado
+        closeLabel: () => cy.get('[data-cy="rem-massiveLBS-step1-vacationCompensationMessageValidation"] > .tln-text-primary-100') //cerrar label
     }
 
     goToLbs(business) {
@@ -29,8 +32,20 @@ class LbsPage {
     }
 
     verifyTitle() {
-        this.elements.title().should('contain', 'Liquidación de Beneficios Sociales (LBS) masivo')
+        const waitForTitle = () => {
+            cy.get('body').then(($body) => {
+                if ($body.find('.tln-text-title-lg').length === 0) {
+                    cy.wait(1000); // Espera breve antes de verificar de nuevo
+                    waitForTitle(); // Llamada recursiva para seguir esperando
+                } else {
+                    this.elements.title().should('contain', 'Liquidación de Beneficios Sociales (LBS) masivo'); // Verificar contenido del título
+                }
+            });
+        };
+
+        waitForTitle();
     }
+    
 
     verifyStepOne() {
         this.elements.stepOne().should('contain', 'Seleccionar trabajadores a liquidar')
@@ -81,7 +96,27 @@ class LbsPage {
         this.elements.checkBoxIncludeWorkers().click()
     }
 
+    clickCheckVacation() {
+        const waitForCheckVacation = () => {
+            cy.get('body').then(($body) => {
+                if ($body.find('[data-cy="rem-massiveLBS-step1-checkbox-considerPaymentForVacationCompensation"]').length === 0) {
+                    cy.wait(1000); // Espera breve antes de verificar de nuevo
+                    waitForCheckVacation(); // Llamada recursiva para seguir esperando
+                } else {
+                    this.elements.checkVacation()
+                        .scrollIntoView({ ensureScrollable: false })
+                        .should('be.visible')
+                        .click({ force: true }); // Usar fuerza para hacer clic
+                }
+            });
+        };
 
+        waitForCheckVacation();
+    }
+
+    verifyLabel() {
+        this.elements.label().should('contain', 'Pago por indemnización por despido activado')
+    }
 
 }
 
