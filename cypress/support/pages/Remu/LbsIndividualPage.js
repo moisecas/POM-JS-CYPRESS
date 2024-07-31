@@ -15,6 +15,7 @@ class LbsIndividualPage {
         modalGenerate: () => cy.get('#modalExitoFiniquitoIndependiente > .modal-dialog > .modal-content > .modal-footer > .btn-success'), //Cálculo de LBS Generado
         buttonInicio: () => cy.get('#modalExitoFiniquitoIndependiente > .modal-dialog > .modal-content > .modal-footer > .btn-warning'), //boton inicio
         pageBreadCrumbs: () => cy.get('.talana-breadcrumbs-world > a'), //REMUNERACIONES
+        wgenerate: () => cy.get('#modalPreviewPeru > .modal-dialog > .modal-content > .modal-footer'), //boton generar
     }
 
     //metodos 
@@ -104,21 +105,49 @@ class LbsIndividualPage {
         waitForButtonClose();
     }
     
+    // clickButtonGenerate() { SIRVE
+    //     cy.get('[title="Cerrar mensaje"]').click() //boton cerrar 
+    //     const waitForButtonGenerate = () => {
+    //         cy.get('body').then(($body) => {
+    //             if ($body.find('#GenerarConBoleta').length === 0) {
+    //                 cy.wait(1000); // Espera breve antes de verificar de nuevo
+    //                 waitForButtonGenerate(); // Llamada recursiva para seguir esperando
+    //             } else {
+    //                 cy.wait(5000); // Espera adicional para asegurar que el contenido se cargue completamente
+    //                 this.elements.buttonGenerate().should('be.visible').click(); // Verificar visibilidad y hacer clic
+    //             }
+    //         });
+    //     };
+
+    //     waitForButtonGenerate();
+    // }
+
+    //OTRA OPCIÓN
+
+    clickWgenerate() {
+        cy.get('#modalPreviewPeru > .modal-dialog > .modal-content > .modal-footer').click() //ventana modal
+    }
+
     clickButtonGenerate() {
-        cy.get('[title="Cerrar mensaje"]').click() //boton cerrar 
+        cy.get('[title="Cerrar mensaje"]').click(); // botón cerrar
         const waitForButtonGenerate = () => {
             cy.get('body').then(($body) => {
                 if ($body.find('#GenerarConBoleta').length === 0) {
                     cy.wait(1000); // Espera breve antes de verificar de nuevo
                     waitForButtonGenerate(); // Llamada recursiva para seguir esperando
                 } else {
-                    this.elements.buttonGenerate().should('be.visible').click(); // Verificar visibilidad y hacer clic
+                    cy.wait(5000); // Espera adicional para asegurar que el contenido se cargue completamente
+                    this.elements.buttonGenerate()
+                        .scrollIntoView() // Asegurarse de que el botón esté en la vista
+                        .should('be.visible')
+                        .click(); // Verificar visibilidad y hacer clic
                 }
             });
         };
-
+    
         waitForButtonGenerate();
     }
+    
 
     
     verfyModalGenerate () {
