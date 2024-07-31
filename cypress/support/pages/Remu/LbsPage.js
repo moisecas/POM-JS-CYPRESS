@@ -36,7 +36,7 @@ class LbsPage {
             cy.get('body').then(($body) => {
                 if ($body.find('.tln-text-title-lg').length === 0) {
                     cy.wait(1000); // Espera breve antes de verificar de nuevo
-                    waitForTitle(); // Llamada recursiva para seguir esperando
+                    waitForTitle(); //para seguir esperando
                 } else {
                     this.elements.title().should('contain', 'Liquidación de Beneficios Sociales (LBS) masivo'); // Verificar contenido del título
                 }
@@ -101,12 +101,12 @@ class LbsPage {
             cy.get('body').then(($body) => {
                 if ($body.find('[data-cy="rem-massiveLBS-step1-checkbox-considerPaymentForVacationCompensation"]').length === 0) {
                     cy.wait(1000); // Espera breve antes de verificar de nuevo
-                    waitForCheckVacation(); // Llamada recursiva para seguir esperando
+                    waitForCheckVacation(); //para seguir esperando
                 } else {
                     this.elements.checkVacation()
                         .scrollIntoView({ ensureScrollable: false })
                         .should('be.visible')
-                        .click({ force: true }); // Usar fuerza para hacer clic
+                        .click({ force: true }); // forzar clic
                 }
             });
         };

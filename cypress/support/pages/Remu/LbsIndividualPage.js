@@ -111,9 +111,9 @@ class LbsIndividualPage {
     //         cy.get('body').then(($body) => {
     //             if ($body.find('#GenerarConBoleta').length === 0) {
     //                 cy.wait(1000); // Espera breve antes de verificar de nuevo
-    //                 waitForButtonGenerate(); // Llamada recursiva para seguir esperando
+    //                 waitForButtonGenerate(); //para seguir esperando
     //             } else {
-    //                 cy.wait(5000); // Espera adicional para asegurar que el contenido se cargue completamente
+    //                 cy.wait(5000); // espera adicional porque no se puede hacer clic en el botón
     //                 this.elements.buttonGenerate().should('be.visible').click(); // Verificar visibilidad y hacer clic
     //             }
     //         });
@@ -134,7 +134,7 @@ class LbsIndividualPage {
             cy.get('body').then(($body) => {
                 if ($body.find('#GenerarConBoleta').length === 0) {
                     cy.wait(1000); // Espera breve antes de verificar de nuevo
-                    waitForButtonGenerate(); // Llamada recursiva para seguir esperando
+                    waitForButtonGenerate(); // para seguir esperando
                 } else {
                     cy.wait(5000); // Espera adicional para asegurar que el contenido se cargue completamente
                     this.elements.buttonGenerate()
