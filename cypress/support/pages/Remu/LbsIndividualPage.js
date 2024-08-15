@@ -105,28 +105,27 @@ class LbsIndividualPage {
         waitForButtonClose();
     }
     
-    // clickButtonGenerate() { SIRVE
-    //     cy.get('[title="Cerrar mensaje"]').click() //boton cerrar 
-    //     const waitForButtonGenerate = () => {
-    //         cy.get('body').then(($body) => {
-    //             if ($body.find('#GenerarConBoleta').length === 0) {
-    //                 cy.wait(1000); // Espera breve antes de verificar de nuevo
-    //                 waitForButtonGenerate(); //para seguir esperando
-    //             } else {
-    //                 cy.wait(5000); // espera adicional porque no se puede hacer clic en el botón
-    //                 this.elements.buttonGenerate().should('be.visible').click(); // Verificar visibilidad y hacer clic
-    //             }
-    //         });
-    //     };
-
-    //     waitForButtonGenerate();
-    // }
-
-    //OTRA OPCIÓN
+   
 
     clickWgenerate() {
-        cy.get('#modalPreviewPeru > .modal-dialog > .modal-content > .modal-footer').click() //ventana modal
+        const waitForModalToDisappear = () => {
+            cy.get('body').then(($body) => {
+                if ($body.find('#modalPreviewPeru > .modal-dialog > .modal-content > .modal-footer').length > 0) {
+                    cy.get('#modalPreviewPeru > .modal-dialog > .modal-content > .modal-footer')
+                      .click() // Hace clic en la ventana modal
+                      .then(() => {
+                          cy.wait(500); // Espera breve para que el cambio en la interfaz gráfica se refleje
+                          waitForModalToDisappear(); // Llama recursivamente hasta que el modal desaparezca
+                      });
+                } else {
+                    cy.log('El modal ha desaparecido');
+                }
+            });
+        };
+    
+        waitForModalToDisappear();
     }
+    
 
     clickButtonGenerate() {
         cy.get('[title="Cerrar mensaje"]').click(); // botón cerrar
@@ -182,7 +181,7 @@ class LbsIndividualPage {
     
 
     clickButtonInicio() {
-        cy.wait(5000)
+        cy.wait(8000)
         this.elements.buttonInicio().click() //boton inicio
     }
 

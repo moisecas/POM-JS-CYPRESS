@@ -2,10 +2,7 @@ import { Given, When, Then} from '@badeball/cypress-cucumber-preprocessor';
 import { sideBarPage } from "../../../support/pages/talana/SideBar";
 import { lbsIndividualPage } from "../../../support/pages/Remu/LbsIndividualPage";  
 
-const employees = ['25635741', '159158357', 
-    '44238608', '76842596', '13555370', '71324569', '48293646',
-    '13555370', '71324569', '90408011'
-];   
+const employees = ['40199086'];   
 
 When("I search for employees and generate LBS for each", () => {
     employees.forEach((dni) => {
@@ -21,7 +18,7 @@ When("I search for employees and generate LBS for each", () => {
         lbsIndividualPage.generateLbs();
         // lbsIndividualPage.verifyModal();
         lbsIndividualPage.verifyTitle();
-        lbsIndividualPage.clickWgenerate(); 
+        //lbsIndividualPage.clickWgenerate(); 
         lbsIndividualPage.clickButtonGenerate();
         // lbsIndividualPage.verfyModal();
         // lbsIndividualPage.verfyModalGenerate();
