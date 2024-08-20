@@ -14,6 +14,7 @@ class PaymentsAssistantPage {
         modalGenerate: () => cy.get('[data-cy="rem-modalProgressCounter-textTitle"]'),
         buttonStepThree: () => cy.get('[data-cy="rem-paymentAssistantSalary-step3-btnNext"]'),
         butoonStepFour: () => cy.get('[data-cy="rem-paymentAssistant-step4-btnPrintSettlements"]'),
+        advanceOption: () => cy.get('[data-cy="rem-paymentAssistant-advance"]')
     }
 
     goToSalary(business) {
@@ -85,6 +86,11 @@ class PaymentsAssistantPage {
         };
         waitForModalToDisappear()
     }
+
+    goToAdvance() {
+        this.elements.advanceOption().click() 
+    }
+
 }
 
 export const paymentAssistantPage = new PaymentsAssistantPage()
