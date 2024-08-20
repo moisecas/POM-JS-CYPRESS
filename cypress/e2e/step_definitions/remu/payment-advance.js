@@ -9,4 +9,4 @@ When("I add all employees", () => {
 
 Then("I visualize the added employees modal {string}", (message) => {
     paymentsAssistantAdvancePage.visualModalAddAllEmployees(message); 
-});
+}); 

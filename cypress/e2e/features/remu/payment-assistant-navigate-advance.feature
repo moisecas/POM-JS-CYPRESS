@@ -8,4 +8,3 @@ Background:
 Scenario: Open the advance page 
     When I go to section advance
     Then  I should be loaded onto "Asistente de Anticipo" page
- 

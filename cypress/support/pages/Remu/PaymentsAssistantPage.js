@@ -90,7 +90,7 @@ class PaymentsAssistantPage {
     goToAdvance() {
         this.elements.advanceOption().click() 
     }
-
+    
 }
 
 export const paymentAssistantPage = new PaymentsAssistantPage()
