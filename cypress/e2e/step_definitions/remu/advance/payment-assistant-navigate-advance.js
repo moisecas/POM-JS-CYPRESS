@@ -1,7 +1,7 @@
 import { When, Then} from '@badeball/cypress-cucumber-preprocessor'; 
-import { paymentAssistantPage } from '../../../support/pages/Remu/PaymentsAssistantPage'; 
-import { paymentsAssistantAdvancePage } from "../../../support/pages/Remu/PaymentsAssistantAdvancePage";  
-import { sideBarPage } from "../../../support/pages/talana/SideBar";
+import { paymentAssistantPage } from '../../../../support/pages/Remu/salary/PaymentsAssistantPage'; 
+import { paymentsAssistantAdvancePage } from "../../../../support/pages/Remu/advance/PaymentsAssistantAdvancePage";  
+import { sideBarPage } from "../../../../support/pages/talana/SideBar";
 
 When("I go to section advance", () => {
     sideBarPage.enterToPaymentAssistant();
