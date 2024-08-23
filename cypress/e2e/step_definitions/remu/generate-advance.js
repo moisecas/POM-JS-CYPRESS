@@ -12,6 +12,6 @@ Then("I visualize the progress window to continue with the generation advance", 
     paymentsAssistantAdvancePage.waitForModalConfirmation;
 });
 
-When("I confirm the generation of payroll advance", () => {
+Then("I confirm the generation of payroll advance", () => {
     paymentsAssistantAdvancePage.clickButtonPrint(); 
 });
