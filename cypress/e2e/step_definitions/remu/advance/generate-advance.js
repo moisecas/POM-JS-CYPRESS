@@ -1,5 +1,5 @@
 import { When, Then } from '@badeball/cypress-cucumber-preprocessor';
-import { paymentsAssistantAdvancePage } from "../../../../support/pages/Remu/advance/PaymentsAssistantAdvancePage";
+import { paymentsAssistantAdvancePage } from '../../../../support/pages/Remu/advance/PaymentsAssistantAdvancePage';
 
 When("I want to generate the payroll advance", () => {
     paymentsAssistantAdvancePage.clicklistItemButton();

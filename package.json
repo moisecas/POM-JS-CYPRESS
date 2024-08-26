@@ -13,13 +13,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@badeball/cypress-cucumber-preprocessor": "latest", 
+    "@badeball/cypress-cucumber-preprocessor": "latest",
     "@cypress/browserify-preprocessor": "^3.0.2",
+    "automation-pe": "file:",
     "cypress": "latest",
     "cypress-wait-until": "^1.7.2"
   },
   "cypress-cucumber-preprocessor": {
-    "stepDefinitions": "cypress/e2e/step_definitions/*/*.js",
+    "stepDefinitions": "cypress/e2e/step_definitions/**/*.js",
     "filterSpecs": true,
     "omitFiltered": true
   },
