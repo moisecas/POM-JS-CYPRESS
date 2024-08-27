@@ -1,5 +1,5 @@
 import { When, Then} from '@badeball/cypress-cucumber-preprocessor'; 
-import { paymentAssistantPage } from '../../../../support/pages/Remu/salary/PaymentsAssistantPage'; 
+import { paymentAssistantPage } from '../../../../support/pages/Remu/menu/PaymentAssistantPage';
 import { paymentsAssistantAdvancePage } from "../../../../support/pages/Remu/advance/PaymentsAssistantAdvancePage";  
 import { sideBarPage } from "../../../../support/pages/talana/SideBar";
 
