@@ -6,7 +6,7 @@ class PaymentsAssistantSalaryPage {
         searchEmployeeInput: () => cy.get('[data-cy="talana-fragmentAddPeople-inputSearchPeople"]'),
         step1NextButton: () => cy.get('[data-cy="rem-paymentAssistantSalary-step1-btnNext"]'),
         showStep1: () => cy.get('[data-cy="rem-paymentAssistant-showStep1"]'),
-        succesMessage: () => cy.get('.bootstrap-growl'),
+        succesMessage: () => cy.get('.bootstrap-growl'), 
         buttonStepOne: () => cy.get('[data-cy="rem-paymentAssistantSalary-step1-btnNext"]'),
         buttonStepOneConfirmation: () => cy.get('[data-cy="rem-paymentAssistantSalary-step1-modalError-btnGenerateLiquidation"]'),
         buttonStepTwo: () => cy.get('[data-cy="rem-paymentAssistantSalary-step2-btnNext"]'),
