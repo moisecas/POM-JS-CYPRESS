@@ -1,4 +1,4 @@
-Feature: Add employees cts
+Feature: Add employees CTS 
 
 Background: 
     Given I enter in to the login from page
