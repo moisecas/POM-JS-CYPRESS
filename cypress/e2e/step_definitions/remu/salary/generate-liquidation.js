@@ -1,5 +1,5 @@
 import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
-import { paymentAssistantPage } from "../../../support/pages/Remu/PaymentsAssistantPage";
+import { paymentAssistantPage } from "../../../../support/pages/Remu/salary/PaymentsAssistantPage";
 
 When("I want to generate the payroll liquidations", () => {
     paymentAssistantPage.clickButtonStepOne();

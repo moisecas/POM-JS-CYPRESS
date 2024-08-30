@@ -80,7 +80,7 @@ class PaymentsAssistantPage {
                     cy.wait(1000)
                     waitForModalToDisappear()
                 } else { 
-                    cy.log('Modal de progreso ha desaparecido')                    
+                    cy.log('Modal de progreso ha desaparecido');                    
                 }
             });
         };
@@ -90,6 +90,7 @@ class PaymentsAssistantPage {
     goToAdvance() {
         this.elements.advanceOption().click() 
     }
+    
 }
 
 export const paymentAssistantPage = new PaymentsAssistantPage()
