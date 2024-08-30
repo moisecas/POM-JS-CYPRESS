@@ -81,6 +81,9 @@ class PaymentsAssistantSalaryPage {
         waitForModalToDisappear()
     }
 
+    goToAdvance() {
+        this.elements.advanceOption().click() 
+    }
     
 }
 
