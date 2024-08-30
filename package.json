@@ -1,0 +1,30 @@
+{
+  "name": "automation-pe",
+  "version": "1.0.0",
+  "description": "Automatizaciones de Talana Peru en Cypress",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.talana.com:talana/qa/automation-pe.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "latest",
+    "@cypress/browserify-preprocessor": "^3.0.2",
+    "automation-pe": "file:",
+    "cypress": "latest",
+    "cypress-wait-until": "^1.7.2"
+  },
+  "cypress-cucumber-preprocessor": {
+    "stepDefinitions": "cypress/e2e/step_definitions/**/*.js",
+    "filterSpecs": true,
+    "omitFiltered": true
+  },
+  "devDependencies": {
+    "cypress-file-upload": "^5.0.8"
+  }
+}
