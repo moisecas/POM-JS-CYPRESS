@@ -32,4 +32,4 @@ class PaymentAssistantCtsPage {
 
 }
 
-export const paymentAssistantCtsPage = new PaymentAssistantCtsPage() 
+export const paymentAssistantCtsPage = new PaymentAssistantCtsPage()
