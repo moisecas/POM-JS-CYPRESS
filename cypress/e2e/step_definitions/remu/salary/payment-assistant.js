@@ -1,4 +1,4 @@
-import { Given, When, Then} from '@badeball/cypress-cucumber-preprocessor'; 
+import { When, Then} from '@badeball/cypress-cucumber-preprocessor'; 
 import { paymentAssistantSalaryPage } from "../../../../support/pages/Remu/salary/PaymentsAssistantSalaryPage";
 
 Then("the switch include terminated is off", () => {
