@@ -16,73 +16,73 @@ class PaymentsAssistantSalaryPage {
     }
 
     pageBreadCrumbs() {
-        this.elements.breadCrumbs().should('contain', 'Asistente de Pago - Asistencia')
+        this.elements.breadCrumbs().should('contain', 'Asistente de Pago - Asistencia'); 
     }
 
     addAllEmployees() {
-        this.elements.addAllEmployeesButton().click()
+        this.elements.addAllEmployeesButton().click(); 
     }
 
     verifyTerminatedEmployeesOff() {
-        this.elements.includeTerminatedEployeesOption().should('not.be.checked')
+        this.elements.includeTerminatedEployeesOption().should('not.be.checked'); 
     }
 
     verifyMessage() {
-        this.elements.succesMessage().should('contain', 'Se agregaron')
+        this.elements.succesMessage().should('contain', 'Se agregaron'); 
     }   
 
     clickButtonStepOne() {
-        this.elements.buttonStepOne().click()
+        this.elements.buttonStepOne().click(); 
     }
 
     clickButtonStepOneConfirmation() {
-        this.elements.buttonStepOneConfirmation().click()
+        this.elements.buttonStepOneConfirmation().click(); 
     }
 
     clickButtonStepTwo() {
-        this.elements.buttonStepTwo().click()
+        this.elements.buttonStepTwo().click(); 
     }
 
     verifyModalGenerate() {
-        cy.intercept('GET', '**/es-pe/remuneraciones/asistenteDePago/progress?liquidacionProcessID=*').as('generationProgress')
-        this.elements.modalGenerate().should('contain', 'Generando Boletas')
-        cy.wait('@generationProgress', { timeout: 60000 }).its('response.statusCode').should('eq', 200) 
+        cy.intercept('GET', '**/es-pe/remuneraciones/asistenteDePago/progress?liquidacionProcessID=*').as('generationProgress'); 
+        this.elements.modalGenerate().should('contain', 'Generando Boletas'); 
+        cy.wait('@generationProgress', { timeout: 60000 }).its('response.statusCode').should('eq', 200);  
     }
 
     clickButtonStepThree() {       
         const waitForButtonStepThree = () => {
             cy.get('body').then(($body) => { 
                 if ($body.find('[data-cy="rem-paymentAssistantSalary-step3-btnNext"]').length === 0) { 
-                    cy.wait(10000)
-                    waitForButtonStepThree()
+                    cy.wait(10000); 
+                    waitForButtonStepThree(); 
                 } else {
-                    this.elements.buttonStepThree().should('be.visible').click()
+                    this.elements.buttonStepThree().should('be.visible').click(); 
                 }
             });
         };
-        waitForButtonStepThree()
+        waitForButtonStepThree(); 
     }
 
     clickButtonStepFour() {
-        this.elements.butoonStepFour().click()
+        this.elements.butoonStepFour().click(); 
     }
 
     verifyModalGenerateTwo() {
         const waitForModalToDisappear = () => {
             cy.get('body').then(($body) => {
                 if ($body.find('[data-cy="rem-modalProgressCounter-textTitle"]').length > 0) {
-                    cy.wait(1000)
-                    waitForModalToDisappear()
+                    cy.wait(1000); 
+                    waitForModalToDisappear(); 
                 } else { 
                     cy.log('Modal de progreso ha desaparecido');                    
                 }
             });
         };
-        waitForModalToDisappear()
+        waitForModalToDisappear(); 
     }
 
     goToAdvance() {
-        this.elements.advanceOption().click() 
+        this.elements.advanceOption().click(); 
     }
     
 }
