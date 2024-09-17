@@ -4,8 +4,7 @@ import { paymentAssistantCtsPage } from '../../../../support/pages/Remu/cts/Paym
 When("I include all employees for CTS", () => {
     paymentAssistantCtsPage.clickSwitchButton();
     paymentAssistantCtsPage.clickAddEmployeesButton();
-    paymentAssistantCtsPage.visualModalProgressCounter();
-    
+    paymentAssistantCtsPage.visualModalProgressCounter();    
 });
 
 Then("I should visualize the {string} modal", (message) => {
