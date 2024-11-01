@@ -10,12 +10,13 @@ class LbsIndividualPage {
         verifyModal: () => cy.get('#modalTitleId'), 
         verifyTitle: () => cy.get('.modal-title > b'), 
         buttonClose: () => cy.get('[title="Cerrar mensaje"]'), 
-        buttonGenerate: () => cy.get('[data-cy="gdp-employees-generate-lbs"]'), 
+        buttonGenerate: () => cy.get('#GenerarConBoleta'), 
         modalTitle: () => cy.get('#modalTitleId'), 
-        modalGenerate: () => cy.get('#modalExitoFiniquitoIndependiente > .modal-dialog > .modal-content > .modal-footer > .btn-success'), //Cálculo de LBS Generado
+        modalGenerate: () => cy.get('#modalExitoFiniquitoIndependiente > .modal-dialog > .modal-content > .modal-body'), //Cálculo de LBS Generado
         buttonInicio: () => cy.get('[data-cy="gdp-employees-return-home-action"]'), 
         pageBreadCrumbs: () => cy.get('.talana-breadcrumbs-world > a'), 
         wgenerate: () => cy.get('#modalPreviewPeru > .modal-dialog > .modal-content > .modal-footer'), 
+        folder: () => cy.get('#modalExitoFiniquitoIndependiente > .modal-dialog > .modal-content > .modal-footer > .btn-success')
     }
  
     enterDni(dni) {
@@ -153,20 +154,28 @@ class LbsIndividualPage {
     //     this.elements.modalGenerate().should('be.visible') //Cálculo de LBS Generado
     // }
 
-    // verfyModalGenerate() {
-    //     const waitForModalGenerate = () => {
-    //         cy.get('body').then(($body) => {
-    //             if ($body.find(this.elements.modalGenerate()).length === 0) {
-    //                 cy.wait(1000); // Espera breve antes de verificar de nuevo
-    //                 waitForModalGenerate(); // Llamada recursiva para seguir esperando
-    //             } else {
-    //                 this.elements.modalGenerate().should('be.visible');
-    //             }
-    //         });
-    //     };
+    verfyModalGenerate() {
+        const waitForModalGenerate = () => {
+            cy.get('body').then(($body) => {
+                const modalContainer = $body.find('#modalExitoFiniquitoIndependiente.modal.fade');
+                if (modalContainer.length === 0 || modalContainer.css('display') === 'none') {
+                    cy.wait(1000); // Espera antes de verificar de nuevo
+                    waitForModalGenerate(); // Llamada recursiva para seguir esperando
+                } else {
+                    cy.get('#modalExitoFiniquitoIndependiente > .modal-dialog > .modal-content > .modal-header')
+                        .should('be.visible') // Asegurarse de que el encabezado del modal es visible
+                        .then(() => {
+                            cy.log('El modal es visible y activo');
+                        });
+                }
+            });
+        };
     
-    //     waitForModalGenerate();
-    // }
+        waitForModalGenerate();
+    }
+    
+    
+    
     
     clickButtonInicio() {
         cy.wait(8000)
@@ -175,6 +184,10 @@ class LbsIndividualPage {
 
     verifyPageBreadCrumbs() {
         this.elements.pageBreadCrumbs().should('contain', 'REMUNERACIONES')
+    }
+
+    goToFolder() {
+        this.elements.folder().click() 
     }
 }
 
