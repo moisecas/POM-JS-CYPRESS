@@ -16,7 +16,8 @@ class LbsIndividualPage {
         buttonInicio: () => cy.get('[data-cy="gdp-employees-return-home-action"]'), 
         pageBreadCrumbs: () => cy.get('.talana-breadcrumbs-world > a'), 
         wgenerate: () => cy.get('#modalPreviewPeru > .modal-dialog > .modal-content > .modal-footer'), 
-        folder: () => cy.get('#modalExitoFiniquitoIndependiente > .modal-dialog > .modal-content > .modal-footer > .btn-success')
+        folder: () => cy.get('#modalExitoFiniquitoIndependiente > .modal-dialog > .modal-content > .modal-footer > .btn-success'),
+        viewDoc: () => cy.get('#panelHeadingLBS > .panel-title > a')   
     }
  
     enterDni(dni) {
@@ -188,6 +189,10 @@ class LbsIndividualPage {
 
     goToFolder() {
         this.elements.folder().click() 
+    }
+
+    clickLbs() {
+        this.elements.viewDoc().click()
     }
 }
 

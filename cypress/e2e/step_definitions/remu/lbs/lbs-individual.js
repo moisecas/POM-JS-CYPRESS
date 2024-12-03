@@ -26,4 +26,5 @@ When("the user clicks on {string}", () => {
 
 Then("the payslip should exist in the employee's folder", (message) => {
     lbsIndividualPage.goToFolder(); 
+    lbsIndividualPage.clickLbs(); 
 }); 
