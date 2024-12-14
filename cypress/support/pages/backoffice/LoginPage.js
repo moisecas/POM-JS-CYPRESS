@@ -1,8 +1,8 @@
 class LoginPage {
     elements = {
-      userNameInput: () => cy.get('[data-cy="talana-user-input"]'),
-      passwordInput: () => cy.get('[data-cy="talana-password-input"]'),
-      buttonSubmit: () => cy.get('[data-cy="talana-login-button"]'),
+      userNameInput: () => cy.get('.validate'),
+      passwordInput: () => cy.get('.input-group > .form-control'),
+      buttonSubmit: () => cy.get('.btn'), 
     }
   
     typeUserName(username) {
@@ -18,11 +18,11 @@ class LoginPage {
     }
   
     submitLogin() {
-        cy.intercept('POST', '/es/api/login/check-login-methods').as('checkLoginMethods');
-        this.clickButtonLogin();
-        cy.wait('@checkLoginMethods').then((interception) => {
-          expect(interception.response.statusCode).to.eq(200);
-        })
+        // cy.intercept('POST', '/es/api/login/check-login-methods').as('checkLoginMethods');
+        // this.clickButtonLogin();
+        // cy.wait('@checkLoginMethods').then((interception) => {
+        //   expect(interception.response.statusCode).to.eq(200);
+        // })
         this.clickButtonLogin();
       }
   

@@ -3,13 +3,13 @@ import { generalUtils } from "../../utils/GeneralUtils";
 class DashboardPage {
 
     elements = {
-        recommendationModal: () => cy.get('[data-testid="survey"]'),
+        //recommendationModal: () => cy.get('[data-testid="survey"]'),
         recommendationModalCloseButton: () => cy.get('.sv__btn-close'),
-        breadCrumbs: () => cy.get('#talana-breadcrumbs-world-title > strong'),
+        breadCrumbs: () => cy.get('.alert'),
     }
 
     homePageBreadCrumbs() {
-        this.elements.breadCrumbs().should('contain', 'Talana');
+        this.elements.breadCrumbs().should('contain', 'La Autenticación de dos pasos esta Desactivada.');
     }
 
     clearRecommendationModal() {
@@ -26,7 +26,7 @@ class DashboardPage {
     }    
 
     verifyLogin() {
-        this.clearRecommendationModal()
+        //this.clearRecommendationModal()
         this.homePageBreadCrumbs();
     }
 
