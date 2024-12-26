@@ -3,6 +3,8 @@ class LoginPage {
       userNameInput: () => cy.get('.validate'),
       passwordInput: () => cy.get('.input-group > .form-control'),
       buttonSubmit: () => cy.get('.btn'), 
+      
+
     }
   
     typeUserName(username) {
