@@ -11,6 +11,7 @@ class SideBarPage {
         itemsWorkflow: () => cy.get('[data-cy="sidebar-itemsWorkflow"]'),
         advancedTools: () => cy.get('[data-cy="sidebar-advancedTools"]'),
         ResumePayments: () => cy.get(':nth-child(25) > .waves-effect > .pcoded-mtext'),
+        blacklist: () => cy.get(':nth-child(2) > :nth-child(2) > :nth-child(5) > .waves-effect > .pcoded-mtext'),
     }
 
     enterToHome() {
