@@ -10,6 +10,7 @@ class SideBarPage {
         reports: () => cy.get('[data-cy="sidebar-reports"]'),
         itemsWorkflow: () => cy.get('[data-cy="sidebar-itemsWorkflow"]'),
         advancedTools: () => cy.get('[data-cy="sidebar-advancedTools"]'),
+        ResumePayments: () => cy.get(':nth-child(25) > .waves-effect > .pcoded-mtext'),
     }
 
     enterToHome() {
@@ -46,6 +47,10 @@ class SideBarPage {
     
     enterToAdvancedTools() {
         this.elements.advancedTools().click();
+    }
+
+    enterToResumePayments() {
+        this.elements.ResumePayments().click();
     }
 
 }

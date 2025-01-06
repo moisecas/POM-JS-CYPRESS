@@ -1,4 +1,5 @@
 import { generalUtils } from "../../utils/GeneralUtils"; 
+import { ResumePayments } from "../Reports/resumePayments";
 
 class DashboardPage {
 
@@ -25,6 +26,7 @@ class DashboardPage {
         balanceBox:() => cy.get(':nth-child(10) > .waves-effect'),    
         recommendationModalCloseButton: () => cy.get('.sv__btn-close'),
         breadCrumbs: () => cy.get('.alert'),
+        
     }
 
     clickBalancePlayer() {
