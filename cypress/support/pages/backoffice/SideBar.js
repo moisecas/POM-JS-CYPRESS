@@ -1,3 +1,5 @@
+import { registeredPlayers } from "../Reports/registeredPlayers";
+
 class SideBarPage {
 
     elements = {
@@ -12,6 +14,7 @@ class SideBarPage {
         advancedTools: () => cy.get('[data-cy="sidebar-advancedTools"]'),
         ResumePayments: () => cy.get(':nth-child(25) > .waves-effect > .pcoded-mtext'),
         blacklist: () => cy.get(':nth-child(2) > :nth-child(2) > :nth-child(5) > .waves-effect > .pcoded-mtext'),
+        registeredPlayers : () => cy.get(':nth-child(2) > :nth-child(2) > :nth-child(4) > .waves-effect > .pcoded-mtext'),
     }
 
     enterToHome() {
